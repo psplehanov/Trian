@@ -3,6 +3,10 @@ import java.util.ArrayList;
 
 public class Ranger extends Player
 {
+	public Ranger()
+	{
+		this.setAi(false);
+	}
 	@Override
 	public void UseTalent(ArrayList<Room> rooms)
 	{
@@ -17,11 +21,5 @@ public class Ranger extends Player
 		{
 			System.out.println("Способность не заряжена");
 		}
-	}
-	
-	
-	public void Entering(Room room)
-	{
-		System.out.println("Вы попали в комнату " + room.getName());
 	}
 }

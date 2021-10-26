@@ -3,6 +3,11 @@ import java.util.ArrayList;
 
 public class AIRanger extends Player
 {
+	public AIRanger()
+	{
+		this.setAi(true);
+	}
+	
 	@Override
 	public int SelectDoor()
 	{
