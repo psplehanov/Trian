@@ -26,35 +26,52 @@ public class GameMaster
 	public void StartGame(ArrayList<Player> players)
 	{	
 		boolean resumegame = true;
-		int chose = 0;
+		int choice = 0;
+		
+		System.out.println("Начинается игра:");
 		
 		while (resumegame  == true)
 		{
+			GetStatusGame(players);
+			
 			for (Player player : players)
 			{
+				
 				System.out.println("ход игрока " + player.getName());
 				
-				Room[] rooms = CreateRooms();
+				ArrayList<Room> rooms = CreateRooms();
 				
 				player.UseTalent(rooms);
 				
-				chose = player.SelectDoor();
+				choice = player.SelectDoor();
 				
-				rooms[chose - 1].Entering(player);
+				player.Entering(rooms.get(choice - 1));
+				player.onExit(rooms.get(choice - 1));
 				
 				if (player.getWaycount() == 0) 
 				{
 					resumegame = false;
 					System.out.println("игрок " + player.getName() + " выиграл!");
-				}
-				
-			}
-			resumegame = false;
+				}				
+			}			
 		}
 		
 	}
 	
-	private Room[] CreateRooms()
+	public void GetStatusGame(ArrayList<Player> players)
+	{
+		System.out.println("_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _");
+		System.out.println("Осталось до центра:");
+		
+		for (Player player : players)
+		{
+			System.out.println("" + player.getName() + ": " + player.getWaycount());
+		}
+		
+		System.out.println("_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _");
+	}
+	
+	private ArrayList<Room> CreateRooms()
 	{
 		int resran = 0;
 		
@@ -74,8 +91,13 @@ public class GameMaster
 		pr.setWay(arrVariableWay[resran][0]);
 		qr.setWay(arrVariableWay[resran][1]);
 		fr.setWay(arrVariableWay[resran][2]);
+		
+		ArrayList<Room> rooms = new ArrayList<Room>();
+		rooms.add(pr);
+		rooms.add(qr);
+		rooms.add(fr);
 
-		return new Room[] {pr, qr, fr};
+		return rooms;
 	}
 	
 }

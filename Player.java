@@ -48,8 +48,17 @@ public class Player
 		return scanner.nextInt();
 	}
 	
-	public void UseTalent(Room[] rooms)
+	public void UseTalent(ArrayList<Room> rooms)
 	{
+	}
+	
+	public void Entering(Room room)
+	{
+	}
+	
+	public void onExit(Room room)
+	{
+		setWaycount(getWaycount() - room.getWay());
 	}
 	
 }

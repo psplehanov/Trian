@@ -33,8 +33,4 @@ public class Room
 		return name;
 	}
 	
-	public void Entering(Player player)
-	{
-		System.out.println("Вы попали в комнату " + name);
-	}
 }
