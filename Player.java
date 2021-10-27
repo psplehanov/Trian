@@ -61,6 +61,36 @@ public class Player
 		return ai;
 	}
 	
+		public void setHealth(int mhealth)
+	{
+		health = mhealth;
+	}
+	
+	public int getHealth()
+	{
+		return health;
+	}
+	
+	public void setArmor(int marmor)
+	{
+		armor = marmor;
+	}
+	
+	public int getArmor()
+	{
+		return armor;
+	}
+	
+	public void setStrength(int mstrength)
+	{
+		strength = mstrength;
+	}
+	
+	public int getStrength()
+	{
+		return strength;
+	}
+	
 	public int SelectDoor()
 	{
 		System.out.println("Введите номер двери от 1 до 3");
@@ -73,22 +103,8 @@ public class Player
 	{
 	}
 	
-	public void Entering(Room room)
+	public void entering(Room room)
 	{
-		if (ai == false)
-		{
-			System.out.println("Вы попали в комнату " + room.getName());
-		}
-		
-		if (room.getName() == "Peace room")
-		{
-			charge = true;
-		}
-	}
-	
-	public void onExit(Room room)
-	{
-		setWaycount(getWaycount() - room.getWay());
 	}
 	
 }

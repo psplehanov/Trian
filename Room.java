@@ -33,4 +33,12 @@ public class Room
 		return name;
 	}
 	
+	public void execute(Player player)
+	{
+	}
+	
+	public void exit(Player player)
+	{
+		player.setWaycount(player.getWaycount() - getWay());
+	}
 }

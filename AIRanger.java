@@ -1,7 +1,7 @@
 import java.lang.Math;
 import java.util.ArrayList;
 
-public class AIRanger extends Player
+public class AIRanger extends AIPlayer
 {
 	public AIRanger()
 	{

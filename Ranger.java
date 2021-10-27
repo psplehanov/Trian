@@ -1,7 +1,7 @@
 import java.util.Scanner;
 import java.util.ArrayList;
 
-public class Ranger extends Player
+public class Ranger extends HumanPlayer
 {
 	public Ranger()
 	{

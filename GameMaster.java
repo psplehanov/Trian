@@ -45,13 +45,15 @@ public class GameMaster
 				
 				choice = player.SelectDoor();
 				
-				player.Entering(rooms.get(choice - 1));
-				player.onExit(rooms.get(choice - 1));
+				rooms.get(choice - 1).execute(player);
+				
+				rooms.get(choice - 1).exit(player);
 				
 				if (player.getWaycount() == 0) 
 				{
 					resumegame = false;
 					System.out.println("игрок " + player.getName() + " выиграл!");
+					break;
 				}				
 			}			
 		}

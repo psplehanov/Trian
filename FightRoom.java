@@ -4,4 +4,12 @@ public class FightRoom extends Room
 	{
 		super("Fight room");
 	}
+	
+	@Override
+	public void execute(Player player)
+	{
+		player.entering(this);
+		
+		Monster monster = new Monster();
+	}
 }
