@@ -1,3 +1,2 @@
-public class Warrior extends Player
-{
+public class Warrior extends Player{
 }

@@ -1,9 +1,7 @@
 import java.util.ArrayList;
 
-public class Trian 
-{
-	public static void main(String[] arg)
-	{
+public class Trian{
+	public static void main(String[] arg){
 		Player p1 = new Ranger();
 		p1.setWaycount(2);
 		p1.setCharge(true);
@@ -20,5 +18,6 @@ public class Trian
 		
 		GameMaster gm = new GameMaster();
 		gm.StartGame(players);
+		
 	}	
 }

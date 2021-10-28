@@ -1,13 +1,11 @@
 import java.util.ArrayList;
 import java.lang.Math;
 
-public class GameMaster
-{
+public class GameMaster{
 	int[][] arrVariableDoor = new int[6][3];
 	int[][] arrVariableWay = new int[6][3];
 	
-	public GameMaster()
-	{
+	public GameMaster(){
 		arrVariableDoor[0] = new int[] {1,2,3};
 		arrVariableDoor[1] = new int[] {1,3,2};
 		arrVariableDoor[2] = new int[] {2,1,3};
@@ -23,19 +21,16 @@ public class GameMaster
 		arrVariableWay[5] = new int[] {1,-1,0};
 	}
 	
-	public void StartGame(ArrayList<Player> players)
-	{	
+	public void StartGame(ArrayList<Player> players){	
 		boolean resumegame = true;
 		int choice = 0;
 		
 		System.out.println("Начинается игра:");
 		
-		while (resumegame  == true)
-		{
+		while (resumegame  == true){
 			GetStatusGame(players);
 			
-			for (Player player : players)
-			{
+			for (Player player : players){
 				
 				System.out.println("ход игрока " + player.getName());
 				
@@ -43,14 +38,13 @@ public class GameMaster
 				
 				player.UseTalent(rooms);
 				
-				choice = player.SelectDoor();
+				choice = player.selectDoor();
 				
 				rooms.get(choice - 1).execute(player);
 				
 				rooms.get(choice - 1).exit(player);
 				
-				if (player.getWaycount() == 0) 
-				{
+				if (player.getWaycount() == 0){
 					resumegame = false;
 					System.out.println("игрок " + player.getName() + " выиграл!");
 					break;
@@ -60,21 +54,18 @@ public class GameMaster
 		
 	}
 	
-	public void GetStatusGame(ArrayList<Player> players)
-	{
+	public void GetStatusGame(ArrayList<Player> players){
 		System.out.println("_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _");
-		System.out.println("Осталось до центра:");
+		System.out.println("Новый ход:");
 		
-		for (Player player : players)
-		{
-			System.out.println("" + player.getName() + ": " + player.getWaycount());
+		for (Player player : players){
+			System.out.println("" + player.getName() + " до центра: " + player.getWaycount() + " здоровье: " + player.getHealth());
 		}
 		
 		System.out.println("_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _");
 	}
 	
-	private ArrayList<Room> CreateRooms()
-	{
+	private ArrayList<Room> CreateRooms(){
 		int resran = 0;
 		
 		//Подготовка комнат
@@ -84,20 +75,21 @@ public class GameMaster
 		
 		//распределение порядкового номера дверей
 		resran = (int)(Math.random()*6);
-		pr.setDoor(arrVariableDoor[resran][0]);
-		qr.setDoor(arrVariableDoor[resran][1]);
-		fr.setDoor(arrVariableDoor[resran][2]);
-		
+		ArrayList<Room> rooms = new ArrayList<Room>();
+		int[] vardoors = arrVariableDoor[resran];
+		for (int i = 0; i < 3; i++){
+			if (vardoors[i] == 1) {rooms.add(pr);}
+			if (vardoors[i] == 2) {rooms.add(qr);}
+			if (vardoors[i] == 3) {rooms.add(fr);}
+		}
+			
 		//распределение прохождения пути
 		resran = (int)(Math.random()*6);
 		pr.setWay(arrVariableWay[resran][0]);
 		qr.setWay(arrVariableWay[resran][1]);
 		fr.setWay(arrVariableWay[resran][2]);
 		
-		ArrayList<Room> rooms = new ArrayList<Room>();
-		rooms.add(pr);
-		rooms.add(qr);
-		rooms.add(fr);
+	
 
 		return rooms;
 	}

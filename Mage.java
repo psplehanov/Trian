@@ -1,3 +1,2 @@
-public class Mage extends Player
-{
+public class Mage extends Player{
 }

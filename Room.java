@@ -1,44 +1,27 @@
-public class Room
-{
-	private int door;
+public class Room{
 	private int way;
 	private String name;
 	
-	public Room(String mname)
-	{
+	public Room(String mname){
 		name = mname;
 	}
-	public void setDoor(int mdoor)
-	{
-		door = mdoor;		
-	}
 	
-	public int getDoor()
-	{
-		return door;
-	}
-	
-	public void setWay(int mway)
-	{
+	public void setWay(int mway){
 		way = mway;		
 	}
 	
-	public int getWay()
-	{
+	public int getWay(){
 		return way;
 	}
 	
-	public String getName()
-	{
+	public String getName(){
 		return name;
 	}
 	
-	public void execute(Player player)
-	{
+	public void execute(Player player){
 	}
 	
-	public void exit(Player player)
-	{
+	public void exit(Player player){
 		player.setWaycount(player.getWaycount() - getWay());
 	}
 }
